@@ -1,3 +1,872 @@
 
-<!-- saved from url=(0011)about:blank -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body></body></html>
+<!-- saved from url=(0261)https://370460449-atari-embeds.googleusercontent.com/embeds/16cb204cf3a9d4d223a0a3fd8b0eec5d/inner-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.gapi.en.24R2mrw_td8.O%2Fd%3D1%2Frs%3DAHpOoo9vR1rNwOjC3PXOxUlyKiCwNBv2Fg%2Fm%3D__features__ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base target="_blank">--><base href="." target="_blank"><script type="text/javascript">;!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define("ScrollBooster",[],e):"object"==typeof exports?exports.ScrollBooster=e():t.ScrollBooster=e()}(this,(function(){return function(t){var e={};function i(o){if(e[o])return e[o].exports;var n=e[o]={i:o,l:!1,exports:{}};return t[o].call(n.exports,n,n.exports,i),n.l=!0,n.exports}return i.m=t,i.c=e,i.d=function(t,e,o){i.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:o})},i.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},i.t=function(t,e){if(1&e&&(t=i(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var o=Object.create(null);if(i.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var n in t)i.d(o,n,function(e){return t[e]}.bind(null,n));return o},i.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return i.d(e,"a",e),e},i.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},i.p="",i(i.s=0)}([function(t,e,i){"use strict";function o(t,e){var i=Object.keys(t);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(t);e&&(o=o.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),i.push.apply(i,o)}return i}function n(t){for(var e=1;e<arguments.length;e++){var i=null!=arguments[e]?arguments[e]:{};e%2?o(Object(i),!0).forEach((function(e){r(t,e,i[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(i)):o(Object(i)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(i,e))}))}return t}function r(t,e,i){return e in t?Object.defineProperty(t,e,{value:i,enumerable:!0,configurable:!0,writable:!0}):t[e]=i,t}function s(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function a(t,e){for(var i=0;i<e.length;i++){var o=e[i];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}i.r(e),i.d(e,"default",(function(){return p}));var l=function(t){return Math.max(t.offsetHeight,t.scrollHeight)},p=function(){function t(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};s(this,t);var i={content:e.viewport.children[0],direction:"all",pointerMode:"all",scrollMode:void 0,bounce:!0,bounceForce:.1,friction:.05,textSelection:!1,inputsFocus:!0,emulateScroll:!1,preventDefaultOnEmulateScroll:!1,preventPointerMoveDefault:!0,lockScrollOnDragDirection:!1,pointerDownPreventDefault:!0,dragDirectionTolerance:40,onPointerDown:function(){},onPointerUp:function(){},onPointerMove:function(){},onClick:function(){},onUpdate:function(){},onWheel:function(){},shouldScroll:function(){return!0}};if(this.props=n(n({},i),e),this.props.viewport&&this.props.viewport instanceof Element)if(this.props.content){this.isDragging=!1,this.isTargetScroll=!1,this.isScrolling=!1,this.isRunning=!1;var o={x:0,y:0};this.position=n({},o),this.velocity=n({},o),this.dragStartPosition=n({},o),this.dragOffset=n({},o),this.clientOffset=n({},o),this.dragPosition=n({},o),this.targetPosition=n({},o),this.scrollOffset=n({},o),this.rafID=null,this.events={},this.updateMetrics(),this.handleEvents()}else console.error("ScrollBooster init error: Viewport does not have any content");else console.error('ScrollBooster init error: "viewport" config property must be present and must be Element')}var e,i,o;return e=t,(i=[{key:"updateOptions",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.props=n(n({},this.props),t),this.props.onUpdate(this.getState()),this.startAnimationLoop()}},{key:"updateMetrics",value:function(){var t;this.viewport={width:this.props.viewport.clientWidth,height:this.props.viewport.clientHeight},this.content={width:(t=this.props.content,Math.max(t.offsetWidth,t.scrollWidth)),height:l(this.props.content)},this.edgeX={from:Math.min(-this.content.width+this.viewport.width,0),to:0},this.edgeY={from:Math.min(-this.content.height+this.viewport.height,0),to:0},this.props.onUpdate(this.getState()),this.startAnimationLoop()}},{key:"startAnimationLoop",value:function(){var t=this;this.isRunning=!0,cancelAnimationFrame(this.rafID),this.rafID=requestAnimationFrame((function(){return t.animate()}))}},{key:"animate",value:function(){var t=this;if(this.isRunning){this.updateScrollPosition(),this.isMoving()||(this.isRunning=!1,this.isTargetScroll=!1);var e=this.getState();this.setContentPosition(e),this.props.onUpdate(e),this.rafID=requestAnimationFrame((function(){return t.animate()}))}}},{key:"updateScrollPosition",value:function(){this.applyEdgeForce(),this.applyDragForce(),this.applyScrollForce(),this.applyTargetForce();var t=1-this.props.friction;this.velocity.x*=t,this.velocity.y*=t,"vertical"!==this.props.direction&&(this.position.x+=this.velocity.x),"horizontal"!==this.props.direction&&(this.position.y+=this.velocity.y),this.props.bounce&&!this.isScrolling||this.isTargetScroll||(this.position.x=Math.max(Math.min(this.position.x,this.edgeX.to),this.edgeX.from),this.position.y=Math.max(Math.min(this.position.y,this.edgeY.to),this.edgeY.from))}},{key:"applyForce",value:function(t){this.velocity.x+=t.x,this.velocity.y+=t.y}},{key:"applyEdgeForce",value:function(){if(this.props.bounce&&!this.isDragging){var t=this.position.x<this.edgeX.from,e=this.position.x>this.edgeX.to,i=this.position.y<this.edgeY.from,o=this.position.y>this.edgeY.to,n=t||e,r=i||o;if(n||r){var s=t?this.edgeX.from:this.edgeX.to,a=i?this.edgeY.from:this.edgeY.to,l=s-this.position.x,p=a-this.position.y,c={x:l*this.props.bounceForce,y:p*this.props.bounceForce},h=this.position.x+(this.velocity.x+c.x)/this.props.friction,u=this.position.y+(this.velocity.y+c.y)/this.props.friction;(t&&h>=this.edgeX.from||e&&h<=this.edgeX.to)&&(c.x=l*this.props.bounceForce-this.velocity.x),(i&&u>=this.edgeY.from||o&&u<=this.edgeY.to)&&(c.y=p*this.props.bounceForce-this.velocity.y),this.applyForce({x:n?c.x:0,y:r?c.y:0})}}}},{key:"applyDragForce",value:function(){if(this.isDragging){var t=this.dragPosition.x-this.position.x,e=this.dragPosition.y-this.position.y;this.applyForce({x:t-this.velocity.x,y:e-this.velocity.y})}}},{key:"applyScrollForce",value:function(){this.isScrolling&&(this.applyForce({x:this.scrollOffset.x-this.velocity.x,y:this.scrollOffset.y-this.velocity.y}),this.scrollOffset.x=0,this.scrollOffset.y=0)}},{key:"applyTargetForce",value:function(){this.isTargetScroll&&this.applyForce({x:.08*(this.targetPosition.x-this.position.x)-this.velocity.x,y:.08*(this.targetPosition.y-this.position.y)-this.velocity.y})}},{key:"isMoving",value:function(){return this.isDragging||this.isScrolling||Math.abs(this.velocity.x)>=.01||Math.abs(this.velocity.y)>=.01}},{key:"scrollTo",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.isTargetScroll=!0,this.targetPosition.x=-t.x||0,this.targetPosition.y=-t.y||0,this.startAnimationLoop()}},{key:"setPosition",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.velocity.x=0,this.velocity.y=0,this.position.x=-t.x||0,this.position.y=-t.y||0,this.startAnimationLoop()}},{key:"getState",value:function(){return{isMoving:this.isMoving(),isDragging:!(!this.dragOffset.x&&!this.dragOffset.y),position:{x:-this.position.x,y:-this.position.y},dragOffset:this.dragOffset,dragAngle:this.getDragAngle(this.clientOffset.x,this.clientOffset.y),borderCollision:{left:this.position.x>=this.edgeX.to,right:this.position.x<=this.edgeX.from,top:this.position.y>=this.edgeY.to,bottom:this.position.y<=this.edgeY.from}}}},{key:"getDragAngle",value:function(t,e){return Math.round(Math.atan2(t,e)*(180/Math.PI))}},{key:"getDragDirection",value:function(t,e){return Math.abs(90-Math.abs(t))<=90-e?"horizontal":"vertical"}},{key:"setContentPosition",value:function(t){"transform"===this.props.scrollMode&&(this.props.content.style.transform="translate(".concat(-t.position.x,"px, ").concat(-t.position.y,"px)")),"native"===this.props.scrollMode&&(this.props.viewport.scrollTop=t.position.y,this.props.viewport.scrollLeft=t.position.x)}},{key:"handleEvents",value:function(){var t=this,e={x:0,y:0},i={x:0,y:0},o=null,n=null,r=!1,s=function(n){if(t.isDragging){var s=r?n.touches[0]:n,a=s.pageX,l=s.pageY,p=s.clientX,c=s.clientY;t.dragOffset.x=a-e.x,t.dragOffset.y=l-e.y,t.clientOffset.x=p-i.x,t.clientOffset.y=c-i.y,(Math.abs(t.clientOffset.x)>5&&!o||Math.abs(t.clientOffset.y)>5&&!o)&&(o=t.getDragDirection(t.getDragAngle(t.clientOffset.x,t.clientOffset.y),t.props.dragDirectionTolerance)),t.props.lockScrollOnDragDirection&&"all"!==t.props.lockScrollOnDragDirection?o===t.props.lockScrollOnDragDirection&&r?(t.dragPosition.x=t.dragStartPosition.x+t.dragOffset.x,t.dragPosition.y=t.dragStartPosition.y+t.dragOffset.y):r?(t.dragPosition.x=t.dragStartPosition.x,t.dragPosition.y=t.dragStartPosition.y):(t.dragPosition.x=t.dragStartPosition.x+t.dragOffset.x,t.dragPosition.y=t.dragStartPosition.y+t.dragOffset.y):(t.dragPosition.x=t.dragStartPosition.x+t.dragOffset.x,t.dragPosition.y=t.dragStartPosition.y+t.dragOffset.y)}};this.events.pointerdown=function(o){r=!(!o.touches||!o.touches[0]),t.props.onPointerDown(t.getState(),o,r);var n=r?o.touches[0]:o,a=n.pageX,l=n.pageY,p=n.clientX,c=n.clientY,h=t.props.viewport,u=h.getBoundingClientRect();if(!(p-u.left>=h.clientLeft+h.clientWidth)&&!(c-u.top>=h.clientTop+h.clientHeight)&&t.props.shouldScroll(t.getState(),o)&&2!==o.button&&("mouse"!==t.props.pointerMode||!r)&&("touch"!==t.props.pointerMode||r)&&!(t.props.inputsFocus&&["input","textarea","button","select","label"].indexOf(o.target.nodeName.toLowerCase())>-1)){if(t.props.textSelection){if(function(t,e,i){for(var o=t.childNodes,n=document.createRange(),r=0;r<o.length;r++){var s=o[r];if(3===s.nodeType){n.selectNodeContents(s);var a=n.getBoundingClientRect();if(e>=a.left&&i>=a.top&&e<=a.right&&i<=a.bottom)return s}}return!1}(o.target,p,c))return;(f=window.getSelection?window.getSelection():document.selection)&&(f.removeAllRanges?f.removeAllRanges():f.empty&&f.empty())}var f;t.isDragging=!0,e.x=a,e.y=l,i.x=p,i.y=c,t.dragStartPosition.x=t.position.x,t.dragStartPosition.y=t.position.y,s(o),t.startAnimationLoop(),!r&&t.props.pointerDownPreventDefault&&o.preventDefault()}},this.events.pointermove=function(e){!e.cancelable||"all"!==t.props.lockScrollOnDragDirection&&t.props.lockScrollOnDragDirection!==o||e.preventDefault(),s(e),t.props.onPointerMove(t.getState(),e,r)},this.events.pointerup=function(e){t.isDragging=!1,o=null,t.props.onPointerUp(t.getState(),e,r)},this.events.wheel=function(e){var i=t.getState();t.props.emulateScroll&&(t.velocity.x=0,t.velocity.y=0,t.isScrolling=!0,t.scrollOffset.x=-e.deltaX,t.scrollOffset.y=-e.deltaY,t.props.onWheel(i,e),t.startAnimationLoop(),clearTimeout(n),n=setTimeout((function(){return t.isScrolling=!1}),80),t.props.preventDefaultOnEmulateScroll&&t.getDragDirection(t.getDragAngle(-e.deltaX,-e.deltaY),t.props.dragDirectionTolerance)===t.props.preventDefaultOnEmulateScroll&&e.preventDefault())},this.events.scroll=function(){var e=t.props.viewport,i=e.scrollLeft,o=e.scrollTop;Math.abs(t.position.x+i)>3&&(t.position.x=-i,t.velocity.x=0),Math.abs(t.position.y+o)>3&&(t.position.y=-o,t.velocity.y=0)},this.events.click=function(e){var i=t.getState(),o="vertical"!==t.props.direction?i.dragOffset.x:0,n="horizontal"!==t.props.direction?i.dragOffset.y:0;Math.max(Math.abs(o),Math.abs(n))>5&&(e.preventDefault(),e.stopPropagation()),t.props.onClick(i,e,r)},this.events.contentLoad=function(){return t.updateMetrics()},this.events.resize=function(){return t.updateMetrics()},this.props.viewport.addEventListener("mousedown",this.events.pointerdown),this.props.viewport.addEventListener("touchstart",this.events.pointerdown,{passive:!1}),this.props.viewport.addEventListener("click",this.events.click),this.props.viewport.addEventListener("wheel",this.events.wheel,{passive:!1}),this.props.viewport.addEventListener("scroll",this.events.scroll),this.props.content.addEventListener("load",this.events.contentLoad,!0),window.addEventListener("mousemove",this.events.pointermove),window.addEventListener("touchmove",this.events.pointermove,{passive:!1}),window.addEventListener("mouseup",this.events.pointerup),window.addEventListener("touchend",this.events.pointerup),window.addEventListener("resize",this.events.resize)}},{key:"destroy",value:function(){this.props.viewport.removeEventListener("mousedown",this.events.pointerdown),this.props.viewport.removeEventListener("touchstart",this.events.pointerdown),this.props.viewport.removeEventListener("click",this.events.click),this.props.viewport.removeEventListener("wheel",this.events.wheel),this.props.viewport.removeEventListener("scroll",this.events.scroll),this.props.content.removeEventListener("load",this.events.contentLoad),window.removeEventListener("mousemove",this.events.pointermove),window.removeEventListener("touchmove",this.events.pointermove),window.removeEventListener("mouseup",this.events.pointerup),window.removeEventListener("touchend",this.events.pointerup),window.removeEventListener("resize",this.events.resize)}}])&&a(e.prototype,i),o&&a(e,o),t}()}]).default})); var scrollElementExists = document.getElementById("line_ww_8241ecacc73cf");;if(scrollElementExists !== null) {var scww_8241ecacc73cf = new ScrollBooster({viewport: document.getElementById("line_ww_8241ecacc73cf"),content: document.getElementById("line_inner_ww_8241ecacc73cf"),direction: "horizontal",scrollMode: "transform"});};function moveww_8241ecacc73cf(direction) {var itemWidth = 59;var pos = scww_8241ecacc73cf.getState();var currentPosition = (Math.floor(pos["position"]["x"] / itemWidth) * itemWidth);if (direction === "right") {var maxPosition = scww_8241ecacc73cf.edgeX["from"] * -1;var newPosition = currentPosition + (3 * itemWidth);if (newPosition > maxPosition) {newPosition = maxPosition;}} else {var newPosition = currentPosition - (3 * itemWidth);if (newPosition < 0) {newPosition = 0;}} var t = scww_8241ecacc73cf.scrollTo({x: newPosition});};'use strict';(function(root,factory){if(typeof define==="function"&&define.amd){define(factory)}else if(typeof exports==="object"){module.exports=factory()}else{root.ResizeSensor=factory()}}(typeof window!=='undefined'?window:this,function(){if(typeof window==="undefined"){return null}
+var globalWindow=typeof window!='undefined'&&window.Math==Math?window:typeof self!='undefined'&&self.Math==Math?self:Function('return this')();var requestAnimationFrame=globalWindow.requestAnimationFrame||globalWindow.mozRequestAnimationFrame||globalWindow.webkitRequestAnimationFrame||function(fn){return globalWindow.setTimeout(fn,20)};function forEachElement(elements,callback){var elementsType=Object.prototype.toString.call(elements);var isCollectionTyped=('[object Array]'===elementsType||('[object NodeList]'===elementsType)||('[object HTMLCollection]'===elementsType)||('[object Object]'===elementsType)||('undefined'!==typeof jQuery&&elements instanceof jQuery)||('undefined'!==typeof Elements&&elements instanceof Elements));var i=0,j=elements.length;if(isCollectionTyped){for(;i<j;i++){callback(elements[i])}}else{callback(elements)}}
+function getElementSize(element){if(!element.getBoundingClientRect){return{width:element.offsetWidth,height:element.offsetHeight}}
+var rect=element.getBoundingClientRect();return{width:Math.round(rect.width),height:Math.round(rect.height)}}
+function setStyle(element,style){Object.keys(style).forEach(function(key){element.style[key]=style[key]})}
+var ResizeSensor=function(element,callback){function EventQueue(){var q=[];this.add=function(ev){q.push(ev)};var i,j;this.call=function(sizeInfo){for(i=0,j=q.length;i<j;i++){q[i].call(this,sizeInfo)}};this.remove=function(ev){var newQueue=[];for(i=0,j=q.length;i<j;i++){if(q[i]!==ev)newQueue.push(q[i])}
+q=newQueue};this.length=function(){return q.length}}
+function attachResizeEvent(element,resized){if(!element)return;if(element.resizedAttached){element.resizedAttached.add(resized);return}
+element.resizedAttached=new EventQueue();element.resizedAttached.add(resized);element.resizeSensor=document.createElement('div');element.resizeSensor.dir='ltr';element.resizeSensor.className='resize-sensor';var style={pointerEvents:'none',position:'absolute',left:'0px',top:'0px',right:'0px',bottom:'0px',overflow:'hidden',zIndex:'-1',visibility:'hidden',maxWidth:'100%'};var styleChild={position:'absolute',left:'0px',top:'0px',transition:'0s',};setStyle(element.resizeSensor,style);var expand=document.createElement('div');expand.className='resize-sensor-expand';setStyle(expand,style);var expandChild=document.createElement('div');setStyle(expandChild,styleChild);expand.appendChild(expandChild);var shrink=document.createElement('div');shrink.className='resize-sensor-shrink';setStyle(shrink,style);var shrinkChild=document.createElement('div');setStyle(shrinkChild,styleChild);setStyle(shrinkChild,{width:'200%',height:'200%'});shrink.appendChild(shrinkChild);element.resizeSensor.appendChild(expand);element.resizeSensor.appendChild(shrink);element.appendChild(element.resizeSensor);var computedStyle=window.getComputedStyle(element);var position=computedStyle?computedStyle.getPropertyValue('position'):null;if('absolute'!==position&&'relative'!==position&&'fixed'!==position){element.style.position='relative'}
+var dirty,rafId;var size=getElementSize(element);var lastWidth=0;var lastHeight=0;var initialHiddenCheck=!0;var lastAnimationFrame=0;var resetExpandShrink=function(){var width=element.offsetWidth;var height=element.offsetHeight;expandChild.style.width=(width+10)+'px';expandChild.style.height=(height+10)+'px';expand.scrollLeft=width+10;expand.scrollTop=height+10;shrink.scrollLeft=width+10;shrink.scrollTop=height+10};var reset=function(){if(initialHiddenCheck){var invisible=element.offsetWidth===0&&element.offsetHeight===0;if(invisible){if(!lastAnimationFrame){lastAnimationFrame=requestAnimationFrame(function(){lastAnimationFrame=0;reset()})}
+return}else{initialHiddenCheck=!1}}
+resetExpandShrink()};element.resizeSensor.resetSensor=reset;var onResized=function(){rafId=0;if(!dirty)return;lastWidth=size.width;lastHeight=size.height;if(element.resizedAttached){element.resizedAttached.call(size)}};var onScroll=function(){size=getElementSize(element);dirty=size.width!==lastWidth||size.height!==lastHeight;if(dirty&&!rafId){rafId=requestAnimationFrame(onResized)}
+reset()};var addEvent=function(el,name,cb){if(el.attachEvent){el.attachEvent('on'+name,cb)}else{el.addEventListener(name,cb)}};addEvent(expand,'scroll',onScroll);addEvent(shrink,'scroll',onScroll);requestAnimationFrame(reset)}
+forEachElement(element,function(elem){attachResizeEvent(elem,callback)});this.detach=function(ev){ResizeSensor.detach(element,ev)};this.reset=function(){element.resizeSensor.resetSensor()}};ResizeSensor.reset=function(element){forEachElement(element,function(elem){elem.resizeSensor.resetSensor()})};ResizeSensor.detach=function(element,ev){forEachElement(element,function(elem){if(!elem)return;if(elem.resizedAttached&&typeof ev==="function"){elem.resizedAttached.remove(ev);if(elem.resizedAttached.length())return}
+if(elem.resizeSensor){if(elem.contains(elem.resizeSensor)){elem.removeChild(elem.resizeSensor)}
+delete elem.resizeSensor;delete elem.resizedAttached}})};if(typeof MutationObserver!=="undefined"){var observer=new MutationObserver(function(mutations){for(var i in mutations){if(mutations.hasOwnProperty(i)){var items=mutations[i].addedNodes;for(var j=0;j<items.length;j++){if(items[j].resizeSensor){ResizeSensor.reset(items[j])}}}}});document.addEventListener("DOMContentLoaded",function(event){observer.observe(document.body,{childList:!0,subtree:!0,})})}
+return ResizeSensor}));'use strict';(function(root,factory){if(typeof define==="function"&&define.amd){define(['./ResizeSensor.js'],factory)}else if(typeof exports==="object"){module.exports=factory(require('./ResizeSensor.js'))}else{root.ElementQueries=factory(root.ResizeSensor);root.ElementQueries.listen()}}(typeof window!=='undefined'?window:this,function(ResizeSensor){var ElementQueries=function(){var cssStyleElement;var allQueries={};var idToSelectorMapping=[];function getEmSize(element){if(!element){element=document.documentElement}
+var fontSize=window.getComputedStyle(element,null).fontSize;return parseFloat(fontSize)||16}
+function getElementSize(element){if(!element.getBoundingClientRect){return{width:element.offsetWidth,height:element.offsetHeight}}
+var rect=element.getBoundingClientRect();return{width:Math.round(rect.width),height:Math.round(rect.height)}}
+function convertToPx(element,value){var numbers=value.split(/\d/);var units=numbers[numbers.length-1];value=parseFloat(value);switch(units){case "px":return value;case "em":return value*getEmSize(element);case "rem":return value*getEmSize();case "vw":return value*document.documentElement.clientWidth/100;case "vh":return value*document.documentElement.clientHeight/100;case "vmin":case "vmax":var vw=document.documentElement.clientWidth/100;var vh=document.documentElement.clientHeight/100;var chooser=Math[units==="vmin"?"min":"max"];return value*chooser(vw,vh);default:return value}}
+function SetupInformation(element,id){this.element=element;var key,option,elementSize,value,actualValue,attrValues,attrValue,attrName;var attributes=['min-width','min-height','max-width','max-height'];this.call=function(){elementSize=getElementSize(this.element);attrValues={};for(key in allQueries[id]){if(!allQueries[id].hasOwnProperty(key)){continue}
+option=allQueries[id][key];value=convertToPx(this.element,option.value);actualValue=option.property==='width'?elementSize.width:elementSize.height;attrName=option.mode+'-'+option.property;attrValue='';if(option.mode==='min'&&actualValue>=value){attrValue+=option.value}
+if(option.mode==='max'&&actualValue<=value){attrValue+=option.value}
+if(!attrValues[attrName])attrValues[attrName]='';if(attrValue&&-1===(' '+attrValues[attrName]+' ').indexOf(' '+attrValue+' ')){attrValues[attrName]+=' '+attrValue}}
+for(var k in attributes){if(!attributes.hasOwnProperty(k))continue;if(attrValues[attributes[k]]){this.element.setAttribute(attributes[k],attrValues[attributes[k]].substr(1))}else{this.element.removeAttribute(attributes[k])}}}}
+function setupElement(element,id){if(!element.elementQueriesSetupInformation){element.elementQueriesSetupInformation=new SetupInformation(element,id)}
+if(!element.elementQueriesSensor){element.elementQueriesSensor=new ResizeSensor(element,function(){element.elementQueriesSetupInformation.call()})}}
+function queueQuery(selector,mode,property,value){if(typeof(allQueries[selector])==='undefined'){allQueries[selector]=[];var id=idToSelectorMapping.length;cssStyleElement.innerHTML+='\n'+selector+' {animation: 0.1s element-queries;}';cssStyleElement.innerHTML+='\n'+selector+' > .resize-sensor {min-width: '+id+'px;}';idToSelectorMapping.push(selector)}
+allQueries[selector].push({mode:mode,property:property,value:value})}
+function getQuery(container){var query;if(document.querySelectorAll)query=(container)?container.querySelectorAll.bind(container):document.querySelectorAll.bind(document);if(!query&&'undefined'!==typeof $$)query=$$;if(!query&&'undefined'!==typeof jQuery)query=jQuery;if(!query){throw 'No document.querySelectorAll, jQuery or Mootools\'s $$ found.'}
+return query}
+function findElementQueriesElements(container){var query=getQuery(container);for(var selector in allQueries)if(allQueries.hasOwnProperty(selector)){var elements=query(selector,container);for(var i=0,j=elements.length;i<j;i++){setupElement(elements[i],selector)}}}
+function attachResponsiveImage(element){var children=[];var rules=[];var sources=[];var defaultImageId=0;var lastActiveImage=-1;var loadedImages=[];for(var i in element.children){if(!element.children.hasOwnProperty(i))continue;if(element.children[i].tagName&&element.children[i].tagName.toLowerCase()==='img'){children.push(element.children[i]);var minWidth=element.children[i].getAttribute('min-width')||element.children[i].getAttribute('data-min-width');var src=element.children[i].getAttribute('data-src')||element.children[i].getAttribute('url');sources.push(src);var rule={minWidth:minWidth};rules.push(rule);if(!minWidth){defaultImageId=children.length-1;element.children[i].style.display='block'}else{element.children[i].style.display='none'}}}
+lastActiveImage=defaultImageId;function check(){var imageToDisplay=!1,i;for(i in children){if(!children.hasOwnProperty(i))continue;if(rules[i].minWidth){if(element.offsetWidth>rules[i].minWidth){imageToDisplay=i}}}
+if(!imageToDisplay){imageToDisplay=defaultImageId}
+if(lastActiveImage!==imageToDisplay){if(!loadedImages[imageToDisplay]){var image=new Image();image.onload=function(){children[imageToDisplay].src=sources[imageToDisplay];children[lastActiveImage].style.display='none';children[imageToDisplay].style.display='block';loadedImages[imageToDisplay]=!0;lastActiveImage=imageToDisplay};image.src=sources[imageToDisplay]}else{children[lastActiveImage].style.display='none';children[imageToDisplay].style.display='block';lastActiveImage=imageToDisplay}}else{children[imageToDisplay].src=sources[imageToDisplay]}}
+element.resizeSensorInstance=new ResizeSensor(element,check);check()}
+function findResponsiveImages(){var query=getQuery();var elements=query('[data-responsive-image],[responsive-image]');for(var i=0,j=elements.length;i<j;i++){attachResponsiveImage(elements[i])}}
+var regex=/,?[\s\t]*([^,\n]*?)((?:\[[\s\t]*?(?:min|max)-(?:width|height)[\s\t]*?[~$\^]?=[\s\t]*?"[^"]*?"[\s\t]*?])+)([^,\n\s\{]*)/mgi;var attrRegex=/\[[\s\t]*?(min|max)-(width|height)[\s\t]*?[~$\^]?=[\s\t]*?"([^"]*?)"[\s\t]*?]/mgi;function extractQuery(css){var match,smatch,attrs,attrMatch;css=css.replace(/'/g,'"');while(null!==(match=regex.exec(css))){smatch=match[1]+match[3];attrs=match[2];while(null!==(attrMatch=attrRegex.exec(attrs))){queueQuery(smatch,attrMatch[1],attrMatch[2],attrMatch[3])}}}
+function readRules(rules){var selector='';if(!rules){return}
+if('string'===typeof rules){rules=rules.toLowerCase();if(-1!==rules.indexOf('min-width')||-1!==rules.indexOf('max-width')){extractQuery(rules)}}else{for(var i=0,j=rules.length;i<j;i++){if(1===rules[i].type){selector=rules[i].selectorText||rules[i].cssText;if(-1!==selector.indexOf('min-height')||-1!==selector.indexOf('max-height')){extractQuery(selector)}else if(-1!==selector.indexOf('min-width')||-1!==selector.indexOf('max-width')){extractQuery(selector)}}else if(4===rules[i].type){readRules(rules[i].cssRules||rules[i].rules)}else if(3===rules[i].type){if(rules[i].styleSheet.hasOwnProperty("cssRules")){readRules(rules[i].styleSheet.cssRules)}}}}}
+var defaultCssInjected=!1;this.init=function(){var animationStart='animationstart';if(typeof document.documentElement.style.webkitAnimationName!=='undefined'){animationStart='webkitAnimationStart'}else if(typeof document.documentElement.style.MozAnimationName!=='undefined'){animationStart='mozanimationstart'}else if(typeof document.documentElement.style.OAnimationName!=='undefined'){animationStart='oanimationstart'}
+document.body.addEventListener(animationStart,function(e){var element=e.target;var styles=element&&window.getComputedStyle(element,null);var animationName=styles&&styles.getPropertyValue('animation-name');var requiresSetup=animationName&&(-1!==animationName.indexOf('element-queries'));if(requiresSetup){element.elementQueriesSensor=new ResizeSensor(element,function(){if(element.elementQueriesSetupInformation){element.elementQueriesSetupInformation.call()}});var sensorStyles=window.getComputedStyle(element.resizeSensor,null);var id=sensorStyles.getPropertyValue('min-width');id=parseInt(id.replace('px',''));setupElement(e.target,idToSelectorMapping[id])}});if(!defaultCssInjected){cssStyleElement=document.createElement('style');cssStyleElement.type='text/css';cssStyleElement.innerHTML='[responsive-image] > img, [data-responsive-image] {overflow: hidden; padding: 0; } [responsive-image] > img, [data-responsive-image] > img {width: 100%;}';cssStyleElement.innerHTML+='\n@keyframes element-queries { 0% { visibility: inherit; } }';document.getElementsByTagName('head')[0].appendChild(cssStyleElement);defaultCssInjected=!0}
+for(var i=0,j=document.styleSheets.length;i<j;i++){try{if(document.styleSheets[i].href&&0===document.styleSheets[i].href.indexOf('file://')){console.warn("CssElementQueries: unable to parse local css files, "+document.styleSheets[i].href)}
+readRules(document.styleSheets[i].cssRules||document.styleSheets[i].rules||document.styleSheets[i].cssText)}catch(e){}}
+findResponsiveImages()};this.findElementQueriesElements=function(container){findElementQueriesElements(container)};this.update=function(){this.init()}};ElementQueries.update=function(){ElementQueries.instance.update()};ElementQueries.detach=function(element){if(element.elementQueriesSetupInformation){element.elementQueriesSensor.detach();delete element.elementQueriesSetupInformation;delete element.elementQueriesSensor}else if(element.resizeSensorInstance){element.resizeSensorInstance.detach();delete element.resizeSensorInstance}};ElementQueries.init=function(){if(!ElementQueries.instance){ElementQueries.instance=new ElementQueries()}
+ElementQueries.instance.init()};var domLoaded=function(callback){if(document.addEventListener){document.addEventListener('DOMContentLoaded',callback,!1)}
+else if(/KHTML|WebKit|iCab/i.test(navigator.userAgent)){var DOMLoadTimer=setInterval(function(){if(/loaded|complete/i.test(document.readyState)){callback();clearInterval(DOMLoadTimer)}},10)}
+else window.onload=callback};ElementQueries.findElementQueriesElements=function(container){ElementQueries.instance.findElementQueriesElements(container)};ElementQueries.listen=function(){domLoaded(ElementQueries.init)};return ElementQueries}));if(typeof elementQueries !== "undefined") {} else {var elementQueries = new ElementQueries();elementQueries.update();};;elementQueries.update();</script><style type="text/css">[responsive-image] > img, [data-responsive-image] {overflow: hidden; padding: 0; } [responsive-image] > img, [data-responsive-image] > img {width: 100%;}
+@keyframes element-queries { 0% { visibility: inherit; } }
+#ww_8241ecacc73cf .ww-box  {animation: 0.1s element-queries;}
+#ww_8241ecacc73cf .ww-box  > .resize-sensor {min-width: 0px;}
+#ww_8241ecacc73cf .ww-box {animation: 0.1s element-queries;}
+#ww_8241ecacc73cf .ww-box > .resize-sensor {min-width: 1px;}</style></head><body><div id="ww_8241ecacc73cf" v="1.3" loc="id" a="{&quot;t&quot;:&quot;horizontal&quot;,&quot;lang&quot;:&quot;fr&quot;,&quot;sl_lpl&quot;:1,&quot;ids&quot;:[&quot;wl7615&quot;],&quot;font&quot;:&quot;Arial&quot;,&quot;sl_ics&quot;:&quot;one_a&quot;,&quot;sl_sot&quot;:&quot;celsius&quot;,&quot;cl_bkg&quot;:&quot;image&quot;,&quot;cl_font&quot;:&quot;#FFFFFF&quot;,&quot;cl_cloud&quot;:&quot;#FFFFFF&quot;,&quot;cl_persp&quot;:&quot;#81D4FA&quot;,&quot;cl_sun&quot;:&quot;#FFC107&quot;,&quot;cl_moon&quot;:&quot;#FFC107&quot;,&quot;cl_thund&quot;:&quot;#FF5722&quot;}"> <style>#ww_8241ecacc73cf{line-height:normal}#ww_8241ecacc73cf div,#ww_8241ecacc73cf span,#ww_8241ecacc73cf svg{vertical-align:baseline;padding:0;margin:0;position:static;border:none}#ww_8241ecacc73cf div{display:block}#ww_8241ecacc73cf span{display:inline}.cssDef{vertical-align:baseline;padding:0;margin:0}#ww_8241ecacc73cf .ww_source{position:absolute;padding:5px;display:inline-block;text-align:right;top:0;right:0;width:auto!important}#ww_8241ecacc73cf .ww_source svg{height:10px;width:10px;opacity:.35}#ww_8241ecacc73cf .ww_infoicon{fill:#fff}#ww_8241ecacc73cf .ww_info{display:none;font-size:10px;padding:7px;opacity:.75;color:black;text-align:left;line-height:15px;margin-top:-17px;margin-right:15px}#ww_8241ecacc73cf .ww_info a{color:black;text-decoration:underline;display:inline}#ww_8241ecacc73cf .ww_source:hover .ww_info{display:block;background-color:#fff}#ww_8241ecacc73cf{vertical-align:baseline;padding:0;margin:0;display:inline-block;width:100%;max-width:440px;text-align:center;position:relative;font-size:15px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;min-width:111px;line-height:normal}#ww_8241ecacc73cf .ww-box{vertical-align:baseline;padding:0;margin:0;padding:10px}#ww_8241ecacc73cf .ww_name{vertical-align:baseline;padding:0;margin:0;font-weight:700}#ww_8241ecacc73cf .ww_name{margin-bottom:10px}#ww_8241ecacc73cf .ww_current{vertical-align:baseline;padding:0;margin:0;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:space-evenly;-webkit-justify-content:space-evenly;-moz-box-pack:space-evenly;-ms-flex-pack:space-evenly;justify-content:space-evenly;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap}#ww_8241ecacc73cf .ww_temp{vertical-align:baseline;padding:0;margin:0;font-size:45px;line-height:47px;height:45px}#ww_8241ecacc73cf .ww_icon svg{vertical-align:baseline;padding:0;margin:0;height:45px;width:45px}#ww_8241ecacc73cf .ww_temp,#ww_8241ecacc73cf .ww_icon,#ww_8241ecacc73cf .ww_cond{vertical-align:baseline;padding:0;margin:0;display:inline-block;margin:0 2%}#ww_8241ecacc73cf .ww-box [max-width~="350px"] .ww_cond{vertical-align:baseline;padding:0;margin:0;width:100%;margin:10px 0 0 0}#ww_8241ecacc73cf .ww-box[max-width~="230px"] .ww_icon{vertical-align:baseline;padding:0;margin:0;width:100%;margin-top:10px}#ww_8241ecacc73cf .ww-box[max-width~="180px"] .ww_temp{vertical-align:baseline;padding:0;margin:0;font-size:25px;line-height:26px;height:25px}#ww_8241ecacc73cf .ww-box[max-width~="180px"] .ww_pressure{vertical-align:baseline;padding:0;margin:0;display:none}#ww_8241ecacc73cf .ww_additional .wi_add_ic{vertical-align:baseline;padding:0;margin:0;opacity:.7}#ww_8241ecacc73cf .ww_wind,#ww_8241ecacc73cf .ww_humidity,#ww_8241ecacc73cf .ww_pressure{vertical-align:baseline;padding:0;margin:0;display:inline-block;margin:10px 2% 0 2%}#ww_8241ecacc73cf .ww_icon_add{vertical-align:baseline;padding:0;margin:0;display:inline-block;height:15px;width:15px;margin-right:5px}#ww_8241ecacc73cf .ww_txt_add{vertical-align:baseline;padding:0;margin:0;position:relative;top:-2px}#ww_8241ecacc73cf .ww_hours{vertical-align:baseline;padding:0;margin:0;position:relative}#ww_8241ecacc73cf .ww_line{vertical-align:baseline;padding:0;margin:0;white-space:nowrap;overflow:hidden;margin:0 25px}#ww_8241ecacc73cf .ww_hour{vertical-align:baseline;padding:0;margin:0;display:inline-block;margin-right:8px;position:relative;width:51px}#ww_8241ecacc73cf .ww_delimiter{vertical-align:baseline;padding:0;margin:0;margin-top:10px;margin-bottom:10px;width:100%;height:1px;background-color:#ffffff3d}#ww_8241ecacc73cf .ww_hour_icon{vertical-align:baseline;padding:0;margin:0;display:inline-block;height:35px;width:35px}#ww_8241ecacc73cf .ww_hour_date{vertical-align:baseline;padding:0;margin:0;font-size:75%;opacity:.7;margin-bottom:5px}#ww_8241ecacc73cf .ww_arr{vertical-align:baseline;padding:0;margin:0;position:absolute;height:20px;width:20px;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;background-color:#0000001a;top:50%;-webkit-transform:translateY(-10px);-moz-transform:translateY(-10px);-ms-transform:translateY(-10px);-o-transform:translateY(-10px);transform:translateY(-10px);cursor:pointer}#ww_8241ecacc73cf .ww_arr_left{vertical-align:baseline;padding:0;margin:0;left:0}#ww_8241ecacc73cf .ww_arr_right{vertical-align:baseline;padding:0;margin:0;right:0}#ww_8241ecacc73cf .ww_noselect{vertical-align:baseline;padding:0;margin:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}#ww_8241ecacc73cf .wi_cloud,#ww_8241ecacc73cf .wi_fog{fill:#404041;stroke:#404041}#ww_8241ecacc73cf .wi_rain,#ww_8241ecacc73cf .wi_snow{fill:#309bff;stroke:#309bff}#ww_8241ecacc73cf .wi_thunder{fill:#ff5d2b}#ww_8241ecacc73cf .wi_sun,#ww_8241ecacc73cf .wi_sun-semi{fill:#fcc756}#ww_8241ecacc73cf .wi_sunshine{fill:#fbb040;stroke:#fbb040}#ww_8241ecacc73cf .wi_moon-semi,#ww_8241ecacc73cf .wi_moon{fill:#fcc756}#ww_8241ecacc73cf .wi_stars{fill:#ffcf47}#ww_8241ecacc73cf .ww-animation-hr-move{-webkit-animation-name:ww-animation-hr-move;-moz-animation-name:ww-animation-hr-move;-o-animation-name:ww-animation-hr-move;animation-name:ww-animation-hr-move;-webkit-animation-duration:7s;-moz-animation-duration:7s;-o-animation-duration:7s;animation-duration:7s;-webkit-animation-timing-function:linear;-moz-animation-timing-function:linear;-o-animation-timing-function:linear;animation-timing-function:linear;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite}@-webkit-keyframes ww-animation-hr-move{0%{-webkit-transform:translate(-7px,0) rotate(0.02deg);transform:translate(-7px,0) rotate(0.02deg)}50%{-webkit-transform:translate(7px,0) rotate(0.02deg);transform:translate(7px,0) rotate(0.02deg)}100%{-webkit-transform:translate(-7px,0) rotate(0.02deg);transform:translate(-7px,0) rotate(0.02deg)}}@-moz-keyframes ww-animation-hr-move{0%{-moz-transform:translate(-7px,0) rotate(0.02deg);transform:translate(-7px,0) rotate(0.02deg)}50%{-moz-transform:translate(7px,0) rotate(0.02deg);transform:translate(7px,0) rotate(0.02deg)}100%{-moz-transform:translate(-7px,0) rotate(0.02deg);transform:translate(-7px,0) rotate(0.02deg)}}@-o-keyframes ww-animation-hr-move{0%{-o-transform:translate(-7px,0) rotate(0.02deg);transform:translate(-7px,0) rotate(0.02deg)}50%{-o-transform:translate(7px,0) rotate(0.02deg);transform:translate(7px,0) rotate(0.02deg)}100%{-o-transform:translate(-7px,0) rotate(0.02deg);transform:translate(-7px,0) rotate(0.02deg)}}@keyframes ww-animation-hr-move{0%{-webkit-transform:translate(-7px,0) rotate(0.02deg);-moz-transform:translate(-7px,0) rotate(0.02deg);-o-transform:translate(-7px,0) rotate(0.02deg);transform:translate(-7px,0) rotate(0.02deg)}50%{-webkit-transform:translate(7px,0) rotate(0.02deg);-moz-transform:translate(7px,0) rotate(0.02deg);-o-transform:translate(7px,0) rotate(0.02deg);transform:translate(7px,0) rotate(0.02deg)}100%{-webkit-transform:translate(-7px,0) rotate(0.02deg);-moz-transform:translate(-7px,0) rotate(0.02deg);-o-transform:translate(-7px,0) rotate(0.02deg);transform:translate(-7px,0) rotate(0.02deg)}}#ww_8241ecacc73cf .wi_cloud_gradient,#ww_8241ecacc73cf .wi_cloud_gradient-2{opacity:.35;isolation:isolate}#ww_8241ecacc73cf .wi_cloud_gradient{fill:url(#wi_cloud_gradient)}#ww_8241ecacc73cf .wi_cloud_gradient-2{fill:url(#wi_cloud_gradient-2)}#ww_8241ecacc73cf .ww-animation-sun{-webkit-animation-name:ww-animation-sun;-moz-animation-name:ww-animation-sun;-o-animation-name:ww-animation-sun;animation-name:ww-animation-sun;-webkit-animation-duration:14s;-moz-animation-duration:14s;-o-animation-duration:14s;animation-duration:14s;-webkit-animation-timing-function:ease-in-out;-moz-animation-timing-function:ease-in-out;-o-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite}@-webkit-keyframes ww-animation-sun{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-moz-keyframes ww-animation-sun{0%{-moz-transform:rotate(0deg);transform:rotate(0deg)}100%{-moz-transform:rotate(360deg);transform:rotate(360deg)}}@-o-keyframes ww-animation-sun{0%{-o-transform:rotate(0deg);transform:rotate(0deg)}100%{-o-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes ww-animation-sun{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}}#ww_8241ecacc73cf .ww-animation-sunshine{-webkit-animation-name:ww-animation-sunshine;-moz-animation-name:ww-animation-sunshine;-o-animation-name:ww-animation-sunshine;animation-name:ww-animation-sunshine;-webkit-animation-duration:3s;-moz-animation-duration:3s;-o-animation-duration:3s;animation-duration:3s;-webkit-animation-timing-function:linear;-moz-animation-timing-function:linear;-o-animation-timing-function:linear;animation-timing-function:linear;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite}@-webkit-keyframes ww-animation-sunshine{0%{stroke-dasharray:1px 10px;stroke-dashoffset:0}50%{stroke-dasharray:6px 20px;stroke-dashoffset:-1px}100%{stroke-dasharray:1px 10px;stroke-dashoffset:0}}@-moz-keyframes ww-animation-sunshine{0%{stroke-dasharray:1px 10px;stroke-dashoffset:0}50%{stroke-dasharray:6px 20px;stroke-dashoffset:-1px}100%{stroke-dasharray:1px 10px;stroke-dashoffset:0}}@-o-keyframes ww-animation-sunshine{0%{stroke-dasharray:1px 10px;stroke-dashoffset:0}50%{stroke-dasharray:6px 20px;stroke-dashoffset:-1px}100%{stroke-dasharray:1px 10px;stroke-dashoffset:0}}@keyframes ww-animation-sunshine{0%{stroke-dasharray:1px 10px;stroke-dashoffset:0}50%{stroke-dasharray:6px 20px;stroke-dashoffset:-1px}100%{stroke-dasharray:1px 10px;stroke-dashoffset:0}}#ww_8241ecacc73cf .ww-animation-moon{-webkit-animation-name:ww-animation-moon;-moz-animation-name:ww-animation-moon;-o-animation-name:ww-animation-moon;animation-name:ww-animation-moon;-webkit-animation-duration:11s;-moz-animation-duration:11s;-o-animation-duration:11s;animation-duration:11s;-webkit-animation-timing-function:ease-in-out;-moz-animation-timing-function:ease-in-out;-o-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite}@-webkit-keyframes ww-animation-moon{0%{-webkit-transform:rotate(-10deg);transform:rotate(-10deg)}50%{-webkit-transform:rotate(10deg);transform:rotate(10deg)}100%{-webkit-transform:rotate(-10deg);transform:rotate(-10deg)}}@-moz-keyframes ww-animation-moon{0%{-moz-transform:rotate(-10deg);transform:rotate(-10deg)}50%{-moz-transform:rotate(10deg);transform:rotate(10deg)}100%{-moz-transform:rotate(-10deg);transform:rotate(-10deg)}}@-o-keyframes ww-animation-moon{0%{-o-transform:rotate(-10deg);transform:rotate(-10deg)}50%{-o-transform:rotate(10deg);transform:rotate(10deg)}100%{-o-transform:rotate(-10deg);transform:rotate(-10deg)}}@keyframes ww-animation-moon{0%{-webkit-transform:rotate(-10deg);-moz-transform:rotate(-10deg);-o-transform:rotate(-10deg);transform:rotate(-10deg)}50%{-webkit-transform:rotate(10deg);-moz-transform:rotate(10deg);-o-transform:rotate(10deg);transform:rotate(10deg)}100%{-webkit-transform:rotate(-10deg);-moz-transform:rotate(-10deg);-o-transform:rotate(-10deg);transform:rotate(-10deg)}}#ww_8241ecacc73cf .ww-animation-thunder{-webkit-animation-name:ww-animation-thunder;-moz-animation-name:ww-animation-thunder;-o-animation-name:ww-animation-thunder;animation-name:ww-animation-thunder;-webkit-animation-duration:7s;-moz-animation-duration:7s;-o-animation-duration:7s;animation-duration:7s;-webkit-animation-timing-function:linear;-moz-animation-timing-function:linear;-o-animation-timing-function:linear;animation-timing-function:linear;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite}@-webkit-keyframes ww-animation-thunder{0%{-webkit-transform:scale(.75);transform:scale(.75)}50%{-webkit-transform:scale(1);transform:scale(1)}100%{-webkit-transform:scale(.75);transform:scale(.75)}}@-moz-keyframes ww-animation-thunder{0%{-moz-transform:scale(.75);transform:scale(.75)}50%{-moz-transform:scale(1);transform:scale(1)}100%{-moz-transform:scale(.75);transform:scale(.75)}}@-o-keyframes ww-animation-thunder{0%{-o-transform:scale(.75);transform:scale(.75)}50%{-o-transform:scale(1);transform:scale(1)}100%{-o-transform:scale(.75);transform:scale(.75)}}@keyframes ww-animation-thunder{0%{-webkit-transform:scale(.75);-moz-transform:scale(.75);-o-transform:scale(.75);transform:scale(.75)}50%{-webkit-transform:scale(1);-moz-transform:scale(1);-o-transform:scale(1);transform:scale(1)}100%{-webkit-transform:scale(.75);-moz-transform:scale(.75);-o-transform:scale(.75);transform:scale(.75)}}#ww_8241ecacc73cf .ww-animation-rain{-webkit-animation-name:ww-animation-rain;-moz-animation-name:ww-animation-rain;-o-animation-name:ww-animation-rain;animation-name:ww-animation-rain;-webkit-animation-duration:8s;-moz-animation-duration:8s;-o-animation-duration:8s;animation-duration:8s;-webkit-animation-timing-function:linear;-moz-animation-timing-function:linear;-o-animation-timing-function:linear;animation-timing-function:linear;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite}#ww_8241ecacc73cf .ww-animation-rain-2{-webkit-animation-delay:0.5s;-moz-animation-delay:0.5s;-o-animation-delay:0.5s;animation-delay:0.5s}@-webkit-keyframes ww-animation-rain{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-100}}@-moz-keyframes ww-animation-rain{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-100}}@-o-keyframes ww-animation-rain{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-100}}@keyframes ww-animation-rain{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-100}}#ww_8241ecacc73cf .ww-animation-snow{-webkit-animation-name:ww-animation-snow;-moz-animation-name:ww-animation-snow;-o-animation-name:ww-animation-snow;animation-name:ww-animation-snow;-webkit-animation-duration:2s;-moz-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;-webkit-animation-timing-function:linear;-moz-animation-timing-function:linear;-o-animation-timing-function:linear;animation-timing-function:linear;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-o-animation-iteration-count:infinite;animation-iteration-count:infinite}#ww_8241ecacc73cf .ww-animation-snow-1{-webkit-animation-delay:1.2s;-moz-animation-delay:1.2s;-o-animation-delay:1.2s;animation-delay:1.2s;-webkit-animation-name:ww-animation-snow-1;-moz-animation-name:ww-animation-snow-1;-o-animation-name:ww-animation-snow-1;animation-name:ww-animation-snow-1}@-webkit-keyframes ww-animation-snow{0%{-webkit-transform:translateX(0) translateY(0);transform:translateX(0) translateY(0)}33.33%{-webkit-transform:translateX(-2px) translateY(7px);transform:translateX(-2px) translateY(7px)}66.66%{-webkit-transform:translateX(3px) translateY(14px);transform:translateX(3px) translateY(14px);opacity:1}100%{-webkit-transform:translateX(-2px) translateY(21px);transform:translateX(-2px) translateY(21px);opacity:0}}@-moz-keyframes ww-animation-snow{0%{-moz-transform:translateX(0) translateY(0);transform:translateX(0) translateY(0)}33.33%{-moz-transform:translateX(-2px) translateY(7px);transform:translateX(-2px) translateY(7px)}66.66%{-moz-transform:translateX(3px) translateY(14px);transform:translateX(3px) translateY(14px);opacity:1}100%{-moz-transform:translateX(-2px) translateY(21px);transform:translateX(-2px) translateY(21px);opacity:0}}@-o-keyframes ww-animation-snow{0%{-o-transform:translateX(0) translateY(0);transform:translateX(0) translateY(0)}33.33%{-o-transform:translateX(-2px) translateY(7px);transform:translateX(-2px) translateY(7px)}66.66%{-o-transform:translateX(3px) translateY(14px);transform:translateX(3px) translateY(14px);opacity:1}100%{-o-transform:translateX(-2px) translateY(21px);transform:translateX(-2px) translateY(21px);opacity:0}}@keyframes ww-animation-snow{0%{-webkit-transform:translateX(0) translateY(0);-moz-transform:translateX(0) translateY(0);-o-transform:translateX(0) translateY(0);transform:translateX(0) translateY(0)}33.33%{-webkit-transform:translateX(-2px) translateY(7px);-moz-transform:translateX(-2px) translateY(7px);-o-transform:translateX(-2px) translateY(7px);transform:translateX(-2px) translateY(7px)}66.66%{-webkit-transform:translateX(3px) translateY(14px);-moz-transform:translateX(3px) translateY(14px);-o-transform:translateX(3px) translateY(14px);transform:translateX(3px) translateY(14px);opacity:1}100%{-webkit-transform:translateX(-2px) translateY(21px);-moz-transform:translateX(-2px) translateY(21px);-o-transform:translateX(-2px) translateY(21px);transform:translateX(-2px) translateY(21px);opacity:0}}@-webkit-keyframes ww-animation-snow-1{0%{-webkit-transform:translateX(0) translateY(0);transform:translateX(0) translateY(0)}33.33%{-webkit-transform:translateX(2px) translateY(7px);transform:translateX(2px) translateY(7px)}66.66%{-webkit-transform:translateX(-3px) translateY(14px);transform:translateX(-3px) translateY(14px);opacity:1}100%{-webkit-transform:translateX(2px) translateY(21px);transform:translateX(2px) translateY(21px);opacity:0}}@-moz-keyframes ww-animation-snow-1{0%{-moz-transform:translateX(0) translateY(0);transform:translateX(0) translateY(0)}33.33%{-moz-transform:translateX(2px) translateY(7px);transform:translateX(2px) translateY(7px)}66.66%{-moz-transform:translateX(-3px) translateY(14px);transform:translateX(-3px) translateY(14px);opacity:1}100%{-moz-transform:translateX(2px) translateY(21px);transform:translateX(2px) translateY(21px);opacity:0}}@-o-keyframes ww-animation-snow-1{0%{-o-transform:translateX(0) translateY(0);transform:translateX(0) translateY(0)}33.33%{-o-transform:translateX(2px) translateY(7px);transform:translateX(2px) translateY(7px)}66.66%{-o-transform:translateX(-3px) translateY(14px);transform:translateX(-3px) translateY(14px);opacity:1}100%{-o-transform:translateX(2px) translateY(21px);transform:translateX(2px) translateY(21px);opacity:0}}@keyframes ww-animation-snow-1{0%{-webkit-transform:translateX(0) translateY(0);-moz-transform:translateX(0) translateY(0);-o-transform:translateX(0) translateY(0);transform:translateX(0) translateY(0)}33.33%{-webkit-transform:translateX(2px) translateY(7px);-moz-transform:translateX(2px) translateY(7px);-o-transform:translateX(2px) translateY(7px);transform:translateX(2px) translateY(7px)}66.66%{-webkit-transform:translateX(-3px) translateY(14px);-moz-transform:translateX(-3px) translateY(14px);-o-transform:translateX(-3px) translateY(14px);transform:translateX(-3px) translateY(14px);opacity:1}100%{-webkit-transform:translateX(2px) translateY(21px);-moz-transform:translateX(2px) translateY(21px);-o-transform:translateX(2px) translateY(21px);transform:translateX(2px) translateY(21px);opacity:0}} #ww_8241ecacc73cf{background-color:grey;color:#FFFFFF;font-family:Arial,Helvetica,sans-serif} #ww_8241ecacc73cf{background-size:cover} #ww_8241ecacc73cf{background-color:#0097A7;background-image:url(https://app2.weatherwidget.org/skin/img/bg/clear_day.jpg)}#ww_8241ecacc73cf .wi_cloud,#ww_8241ecacc73cf .wi_fog {fill:#FFFFFF;stroke:#FFFFFF;}#ww_8241ecacc73cf .wi_rain,#ww_8241ecacc73cf .wi_snow {fill:#81D4FA;stroke:#81D4FA;}#ww_8241ecacc73cf .wi_sun,#ww_8241ecacc73cf .wi_sun-semi,#ww_8241ecacc73cf .wi_sunshine {fill:#FFC107;stroke:#FFC107;}#ww_8241ecacc73cf .wi_moon-semi,#ww_8241ecacc73cf .wi_moon,#ww_8241ecacc73cf .wi_stars {fill:#FFC107;} #ww_8241ecacc73cf .ww_additional .wi_add_ic{fill:#FFFFFF}</style><div class="ww-box">  <div class="ww_name"> Ile-de-France </div>  <div class="ww_current"> <div class="ww_temp"> 17°C </div> <div class="ww_icon"> <!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(-15,-15) scale(1.3)"><g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</g></svg> </div> <div class="ww_cond"> Ciel dégagé </div> </div>  <div class="ww_additional"> <div class="ww_wind"> <span class="ww_icon_add"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.504 85.504"><path class="wi_add_ic" d="M62.1387,40.2942H8.4043a5,5,0,0,1,0-10H62.1387a9.961,9.961,0,0,0,0-19.9219,9.8548,9.8548,0,0,0-6.0747,2.085,5,5,0,1,1-6.1152-7.9121A19.768,19.768,0,0,1,62.1387.3723a19.961,19.961,0,0,1,0,39.9219Z"></path><path class="wi_add_ic" d="M59.6783,85.1316a17.0694,17.0694,0,0,1-10.525-3.6025,5,5,0,1,1,6.1153-7.9121,7.1517,7.1517,0,0,0,4.41,1.5146,7.2339,7.2339,0,0,0,0-14.4678H32.2871a5,5,0,0,1,0-10H59.6783a17.2339,17.2339,0,0,1,0,34.4678Z"></path></svg> </span> <span class="ww_txt_add"> 2.5 m/s </span> </div> <div class="ww_humidity"> <span class="ww_icon_add"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.504 85.504"><path class="wi_add_ic" d="M42.7522,84.8517A34.2725,34.2725,0,0,1,8.5964,50.54c0-16.4932,14.4585-33.3033,28.6021-47.5718a7.8165,7.8165,0,0,1,11.054-.053l.0529.053C62.4485,17.2369,76.9075,34.047,76.9075,50.54A34.2723,34.2723,0,0,1,42.7522,84.8517Zm-.0005-73.2774C34.4373,20.0153,18.5964,36.8478,18.5964,50.54a24.1561,24.1561,0,1,0,48.3111.3256q.0012-.1628,0-.3256C66.9075,36.8478,51.0667,20.0153,42.7517,11.5743Z"></path><path class="wi_add_ic" d="M40.1223,61.9142a3.5,3.5,0,0,1,0-7,8.4161,8.4161,0,0,0,8.375-8.4385,3.5,3.5,0,0,1,7,0A15.4242,15.4242,0,0,1,40.1223,61.9142Z"></path></svg> </span> <span class="ww_txt_add"> 68% </span> </div> <div class="ww_pressure"> <span class="ww_icon_add"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95.2435 95.2014"><path class="wi_add_ic" d="M47.622,89.0741A41.4734,41.4734,0,1,1,89.0951,47.6005,41.5209,41.5209,0,0,1,47.622,89.0741Zm0-72.9468A31.4734,31.4734,0,1,0,79.0951,47.6005,31.509,31.509,0,0,0,47.622,16.1273Z"></path><circle class="wi_add_ic" cx="47.6218" cy="56.5067" r="10.7335"></circle><line class="wi_add_ic" x1="47.6218" y1="56.5067" x2="58.3552" y2="34.1889"></line><path class="wi_add_ic" d="M47.6186,61.5077a5.002,5.002,0,0,1-4.5025-7.168L53.849,32.0218a5,5,0,0,1,9.0118,4.334L52.1278,58.6737A4.9994,4.9994,0,0,1,47.6186,61.5077Z"></path></svg> </span> <span class="ww_txt_add"> 761 <span>mmHg</span> </span> </div> </div>  <div class="ww_delimiter"></div>  <div class="ww_hours ww_noselect"> <div class="ww_line" id="line_ww_8241ecacc73cf"> <div id="line_inner_ww_8241ecacc73cf">  <div class="ww_hour"> <div class="ww_hour_date">20:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 17°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">21:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 16°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">22:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 15°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">23:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(73,31) rotate(-25) scale(0.77)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g>
+<circle class="wi_stars" cx="10.387" cy="31.0012" r="3.0669"></circle><circle class="wi_stars" cx="19.3189" cy="33.1022" r="2.101"></circle><circle class="wi_stars" cx="23.7578" cy="23.1285" r="1.9041"></circle>	<g class="ww-animation-hr-move">
+		<path class="wi_cloud" d="M42.2984,53.6806a14.3613,14.3613,0,1,0-13.327,19.5512l42.1491-.0041a14.479,14.479,0,0,0-.0687-28.9567,14.2687,14.2687,0,0,0-4.5761.7722,13.4788,13.4788,0,0,0,.2894-2.6478c0-8.3686-7.615-15.1526-17.0086-15.1526s-17.0086,6.784-17.0086,15.1526a13.5833,13.5833,0,0,0,.2692,2.6087"></path>
+		<path class="wi_cloud" d="M28.9717,75.2318a16.3446,16.3446,0,1,1-.05-32.689,16.6505,16.6505,0,0,1,1.8281.1c-.001-.0825-.002-.165-.002-.2476,0-9.458,8.5274-17.1523,19.0088-17.1523s19.0078,7.6943,19.0078,17.1523v.045a15.6472,15.6472,0,0,1,2.2872-.1695A16.4792,16.4792,0,0,1,71.12,75.2279Zm-.05-28.689a12.3447,12.3447,0,1,0,.05,24.689L71.12,71.2279a12.4794,12.4794,0,0,0-.0683-24.9571,12.3266,12.3266,0,0,0-3.9375.668l-3.2735,1.1025.6729-3.3881a11.452,11.452,0,0,0,.2509-2.2579c0-7.2524-6.7324-13.1523-15.0078-13.1523s-15.0088,5.9-15.0088,13.1523a10.4263,10.4263,0,0,0,.0752,1.2344,16.2968,16.2968,0,0,1,9.3379,9.3208,2,2,0,0,1-3.7246,1.46A12.3024,12.3024,0,0,0,28.9219,46.5428Z"></path>
+		<ellipse class="wi_cloud_gradient" cx="71.5205" cy="58.6433" rx="16.4336" ry="15.6777" transform="translate(12.5544 129.8979) rotate(-89.741)"></ellipse>
+		<ellipse class="wi_cloud" cx="49.7083" cy="44.3165" rx="19.0833" ry="18.4751"></ellipse>
+		<ellipse class="wi_cloud_gradient-2" cx="49.6032" cy="43.7126" rx="18.2528" ry="19.1329" transform="translate(-3.1296 83.5939) rotate(-78.4878)"></ellipse>
+		<circle class="wi_cloud" cx="29.0018" cy="58.8044" r="16.3878"></circle>
+	</g></svg></div> <div class="ww_hour_temp"> 14°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">00:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 13°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">01:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(73,31) rotate(-25) scale(0.77)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g>
+<circle class="wi_stars" cx="10.387" cy="31.0012" r="3.0669"></circle><circle class="wi_stars" cx="19.3189" cy="33.1022" r="2.101"></circle><circle class="wi_stars" cx="23.7578" cy="23.1285" r="1.9041"></circle>	<g class="ww-animation-hr-move">
+		<path class="wi_cloud" d="M42.2984,53.6806a14.3613,14.3613,0,1,0-13.327,19.5512l42.1491-.0041a14.479,14.479,0,0,0-.0687-28.9567,14.2687,14.2687,0,0,0-4.5761.7722,13.4788,13.4788,0,0,0,.2894-2.6478c0-8.3686-7.615-15.1526-17.0086-15.1526s-17.0086,6.784-17.0086,15.1526a13.5833,13.5833,0,0,0,.2692,2.6087"></path>
+		<path class="wi_cloud" d="M28.9717,75.2318a16.3446,16.3446,0,1,1-.05-32.689,16.6505,16.6505,0,0,1,1.8281.1c-.001-.0825-.002-.165-.002-.2476,0-9.458,8.5274-17.1523,19.0088-17.1523s19.0078,7.6943,19.0078,17.1523v.045a15.6472,15.6472,0,0,1,2.2872-.1695A16.4792,16.4792,0,0,1,71.12,75.2279Zm-.05-28.689a12.3447,12.3447,0,1,0,.05,24.689L71.12,71.2279a12.4794,12.4794,0,0,0-.0683-24.9571,12.3266,12.3266,0,0,0-3.9375.668l-3.2735,1.1025.6729-3.3881a11.452,11.452,0,0,0,.2509-2.2579c0-7.2524-6.7324-13.1523-15.0078-13.1523s-15.0088,5.9-15.0088,13.1523a10.4263,10.4263,0,0,0,.0752,1.2344,16.2968,16.2968,0,0,1,9.3379,9.3208,2,2,0,0,1-3.7246,1.46A12.3024,12.3024,0,0,0,28.9219,46.5428Z"></path>
+		<ellipse class="wi_cloud_gradient" cx="71.5205" cy="58.6433" rx="16.4336" ry="15.6777" transform="translate(12.5544 129.8979) rotate(-89.741)"></ellipse>
+		<ellipse class="wi_cloud" cx="49.7083" cy="44.3165" rx="19.0833" ry="18.4751"></ellipse>
+		<ellipse class="wi_cloud_gradient-2" cx="49.6032" cy="43.7126" rx="18.2528" ry="19.1329" transform="translate(-3.1296 83.5939) rotate(-78.4878)"></ellipse>
+		<circle class="wi_cloud" cx="29.0018" cy="58.8044" r="16.3878"></circle>
+	</g></svg></div> <div class="ww_hour_temp"> 12°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">02:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(73,31) rotate(-25) scale(0.77)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g>
+<circle class="wi_stars" cx="10.387" cy="31.0012" r="3.0669"></circle><circle class="wi_stars" cx="19.3189" cy="33.1022" r="2.101"></circle><circle class="wi_stars" cx="23.7578" cy="23.1285" r="1.9041"></circle>	<g class="ww-animation-hr-move">
+		<path class="wi_cloud" d="M42.2984,53.6806a14.3613,14.3613,0,1,0-13.327,19.5512l42.1491-.0041a14.479,14.479,0,0,0-.0687-28.9567,14.2687,14.2687,0,0,0-4.5761.7722,13.4788,13.4788,0,0,0,.2894-2.6478c0-8.3686-7.615-15.1526-17.0086-15.1526s-17.0086,6.784-17.0086,15.1526a13.5833,13.5833,0,0,0,.2692,2.6087"></path>
+		<path class="wi_cloud" d="M28.9717,75.2318a16.3446,16.3446,0,1,1-.05-32.689,16.6505,16.6505,0,0,1,1.8281.1c-.001-.0825-.002-.165-.002-.2476,0-9.458,8.5274-17.1523,19.0088-17.1523s19.0078,7.6943,19.0078,17.1523v.045a15.6472,15.6472,0,0,1,2.2872-.1695A16.4792,16.4792,0,0,1,71.12,75.2279Zm-.05-28.689a12.3447,12.3447,0,1,0,.05,24.689L71.12,71.2279a12.4794,12.4794,0,0,0-.0683-24.9571,12.3266,12.3266,0,0,0-3.9375.668l-3.2735,1.1025.6729-3.3881a11.452,11.452,0,0,0,.2509-2.2579c0-7.2524-6.7324-13.1523-15.0078-13.1523s-15.0088,5.9-15.0088,13.1523a10.4263,10.4263,0,0,0,.0752,1.2344,16.2968,16.2968,0,0,1,9.3379,9.3208,2,2,0,0,1-3.7246,1.46A12.3024,12.3024,0,0,0,28.9219,46.5428Z"></path>
+		<ellipse class="wi_cloud_gradient" cx="71.5205" cy="58.6433" rx="16.4336" ry="15.6777" transform="translate(12.5544 129.8979) rotate(-89.741)"></ellipse>
+		<ellipse class="wi_cloud" cx="49.7083" cy="44.3165" rx="19.0833" ry="18.4751"></ellipse>
+		<ellipse class="wi_cloud_gradient-2" cx="49.6032" cy="43.7126" rx="18.2528" ry="19.1329" transform="translate(-3.1296 83.5939) rotate(-78.4878)"></ellipse>
+		<circle class="wi_cloud" cx="29.0018" cy="58.8044" r="16.3878"></circle>
+	</g></svg></div> <div class="ww_hour_temp"> 11°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">03:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 10°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">04:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 9°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">05:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 9°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">06:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 8°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">07:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 8°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">08:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 8°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">09:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 9°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">10:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 10°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">11:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 11°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">12:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 13°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">13:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 14°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">14:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 15°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">15:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 15°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">16:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 15°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">17:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 15°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">18:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 14°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">19:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 13°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">20:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+	<circle class="wi_sun" cx="0" cy="0" r="16.9"></circle>
+	<g class="ww-animation-sun">
+		<g transform="rotate(0)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(45)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(90)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(135)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(180)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(225)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+			<g transform="rotate(270)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+		<g transform="rotate(315)">
+			<line class="ww-animation-sunshine wi_sunshine" stroke-linecap="round" stroke-width="5" transform="translate(0,24)" x1="0" x2="0" y1="0" y2="7"></line>
+		</g>
+	</g>
+</g>
+</svg></div> <div class="ww_hour_temp"> 11°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">21:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 10°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">22:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 9°C </div> </div>  <div class="ww_hour"> <div class="ww_hour_date">23:00</div> <div class="ww_hour_icon"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><lineargradient id="wi_thunder" x1="50.5297" y1="61.3953" x2="50.5297" y2="95.2093" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f58e58"></stop><stop offset="1" stop-color="#f16a54"></stop></lineargradient>
+
+<lineargradient id="wi_moon" x1="49.0818" y1="26.7472" x2="49.0818" y2="74.0318" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_moon-semi" x1="74.4389" y1="10.1892" x2="74.4389" y2="45.2739" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="0.1824" stop-color="#fec74c"></stop><stop offset="0.578" stop-color="#fcbc54"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun" x1="49.9873" y1="33.1058" x2="49.9873" y2="66.8666" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffcf47"></stop><stop offset="1" stop-color="#fcb856"></stop></lineargradient>
+
+<lineargradient id="wi_sun-semi" x1="30.9033" y1="18.7281" x2="30.9033" y2="48.2772" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd048"></stop><stop offset="1" stop-color="#fcb956"></stop></lineargradient><radialgradient id="wi_cloud_gradient" cx="217.6028" cy="139.908" r="19.6551" gradientTransform="matrix(-0.9799, 0.1996, -0.1996, -0.9799, 329.8802, 142.0496)" gradientUnits="userSpaceOnUse"><stop offset="0.0307" stop-color="#777ab4"></stop><stop offset="1" stop-color="#777ab4" stop-opacity="0"></stop></radialgradient>
+<radialgradient id="wi_cloud_gradient-2" cx="27.5833" cy="51.4167" r="22.8835" gradientTransform="translate(82.5368 -13.6167) rotate(78.4878)" xlink:href="#wi_cloud_gradient"></radialgradient>
+<g transform="translate(50,50)">
+  <g class="ww-animation-moon">
+    <path class="wi_moon" d="M9.34-3.701a17.99,17.99,0,0,1,7.81-15.0437A24.7547,24.7547,0,0,0,2.3754-23.5861C-11.0867-23.5861-22-13.0012-22,.0562S-11.0867,23.6985,2.3754,23.6985A24.5665,24.5665,0,0,0,22.3486,13.6011C14.9189,11.9147,9.34,4.8113,9.34-3.701Z"></path>
+  </g>
+</g><circle class="wi_stars" cx="31.6497" cy="23.8835" r="2.4055"></circle><circle class="wi_stars" cx="18.3165" cy="62.0961" r="1.8556"></circle><circle class="wi_stars" cx="29.038" cy="75.9791" r="2.4055"></circle><circle class="wi_stars" cx="69.5874" cy="76.5289" r="1.9931"></circle><circle class="wi_stars" cx="81.1337" cy="34.605" r="2.4055"></circle><circle class="wi_stars" cx="73.2987" cy="50.4124" r="1.8556"></circle></svg></div> <div class="ww_hour_temp"> 8°C </div> </div>  </div> </div> <div class="ww_arr ww_arr_left" onclick="moveww_8241ecacc73cf(&#39;&#39;)"><span>‹</span></div> <div class="ww_arr ww_arr_right" onclick="moveww_8241ecacc73cf(&#39;right&#39;)"><span>›</span></div> </div>  <div class="ww_source"> <!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 111.577 111.577" xml:space="preserve"><path class="ww_infoicon" d="M78.962,99.536l-1.559,6.373c-4.677,1.846-8.413,3.251-11.195,4.217c-2.785,0.969-6.021,1.451-9.708,1.451
+		c-5.662,0-10.066-1.387-13.207-4.142c-3.141-2.766-4.712-6.271-4.712-10.523c0-1.646,0.114-3.339,0.351-5.064
+		c0.239-1.727,0.619-3.672,1.139-5.846l5.845-20.688c0.52-1.981,0.962-3.858,1.316-5.633c0.359-1.764,0.532-3.387,0.532-4.848
+		c0-2.642-0.547-4.49-1.636-5.529c-1.089-1.036-3.167-1.562-6.252-1.562c-1.511,0-3.064,0.242-4.647,0.71
+		c-1.59,0.47-2.949,0.924-4.09,1.346l1.563-6.378c3.829-1.559,7.489-2.894,10.99-4.002c3.501-1.111,6.809-1.667,9.938-1.667
+		c5.623,0,9.962,1.359,13.009,4.077c3.047,2.72,4.57,6.246,4.57,10.591c0,0.899-0.1,2.483-0.315,4.747
+		c-0.21,2.269-0.601,4.348-1.171,6.239l-5.82,20.605c-0.477,1.655-0.906,3.547-1.279,5.676c-0.385,2.115-0.569,3.731-0.569,4.815
+		c0,2.736,0.61,4.604,1.833,5.597c1.232,0.993,3.354,1.487,6.368,1.487c1.415,0,3.025-0.251,4.814-0.744
+		C76.854,100.348,78.155,99.915,78.962,99.536z M80.438,13.03c0,3.59-1.353,6.656-4.072,9.177c-2.712,2.53-5.98,3.796-9.803,3.796
+		c-3.835,0-7.111-1.266-9.854-3.796c-2.738-2.522-4.11-5.587-4.11-9.177c0-3.583,1.372-6.654,4.11-9.207
+		C59.447,1.274,62.729,0,66.563,0c3.822,0,7.091,1.277,9.803,3.823C79.087,6.376,80.438,9.448,80.438,13.03z"></path></svg> <div class="ww_info"> Plus de prévisions: <a href="https://oneweather.org/fr/paris/30_jours/" id="ww_8241ecacc73cf_u" target="_blank">Météo 30 jours</a> </div> </div></div> <script></script> </div><script async="" src="./saved_resource"></script></body></html>
